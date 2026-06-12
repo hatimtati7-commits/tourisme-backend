@@ -17,6 +17,7 @@ public class Tourist {
 
     private String name;
     private String email;
+    private String password;
 
     @ElementCollection
     private List<String> preferences;

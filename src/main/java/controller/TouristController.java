@@ -20,6 +20,14 @@ public class TouristController {
         return ResponseEntity.ok(touristRepo.save(tourist));
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Tourist loginRequest) {
+        return touristRepo.findByEmail(loginRequest.getEmail())
+                .filter(t -> t.getPassword().equals(loginRequest.getPassword()))
+                .map(t -> ResponseEntity.ok((Object) t))
+                .orElse(ResponseEntity.status(401).body("Email ou mot de passe incorrect"));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Tourist> getById(
             @PathVariable Long id) {
