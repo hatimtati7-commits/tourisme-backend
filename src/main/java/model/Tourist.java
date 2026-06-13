@@ -19,6 +19,10 @@ public class Tourist {
     private String email;
     private String password;
 
+    private int nbFavoris = 0;
+    private int nbVilles = 0;
+    private int nbVoyages = 0;
+
     @ElementCollection
     private List<String> preferences;
 
